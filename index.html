@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="lib/bootstrap.min.css">
+	<script src="lib/linkedme.min.js"></script>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="container" style="margin-top: 30px">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3">
+				<h2>LinkedME Web-SDK接口调用示例</h2>
+				<br>
+				<h4>Session info</h4>
+				<pre id="session"> </pre>
+				<h4>Request</h4>
+				<pre id="request"> </pre>
+				<h4>Response</h4>
+				<pre id="response"> </pre>
+				<hr>
+				<h2>接口</h2>
+				<div class="form-group">
+					<label for="lkme_key" class="h5">linkedme key</label>
+					<input type="text" id="lkme_key" class="form-control" placeholder="">
+				</div>
+				<div class="form-group">
+					<label for="" class="h4">初始化linkedme对象接口</label>
+					<input type="button" id="init" class="btn btn-default btn-success" value=".init()">
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="" class="h5">功能</label>
+							<input type="text" id="features" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="" class="h5">活动</label>
+							<input type="text" id="campaigns" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="" class="h5">阶段</label>
+							<input type="text" id="stages" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="" class="h5">渠道</label>
+							<input type="text" id="channels" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="" class="h5">标签</label>
+							<input type="text" id="tags" class="form-control">
+						</div>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="" class="h5">自定义参数</label>
+							<input type="text" id="params" class="form-control" placeholder='{"category":"electronics","productid":"1234"}'>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="h4">生成深度链接接口</label>
+					<input type="button" id="link" class="btn btn-default btn-success" value=".link()">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+
+		$("#init").click(function(){
+			$("#lkme_key").val() && (linkedme.init($("#lkme_key").val(), null, function(err, data){
+				if(err){
+					$("#response").html(JSON.stringify(err));
+				} else {
+					$("#session").html(data.session_id);
+					document.cookie = data.identity_id;
+					$("#response").html(JSON.stringify(data));
+				}
+			}))
+		});
+		$("#link").click(function(){
+			var data = {};
+			data.feature = $("#features").val(); // 自定义深度链接功能，多个用逗号分隔，【可选】
+			data.campaign = $("#campaigns").val(); // 自定义深度链接活动，多个用逗号分隔，【可选】
+			data.stage = $("#stages").val(); // 自定义深度链接阶段，多个用逗号分隔，【可选】
+			data.channel = $("#channels").val(); // 自定义深度链接渠道，多个用逗号分隔，【可选】
+			data.tags = $("#tags").val(); // 自定义深度链接标签，多个用逗号分隔，【可选】
+			data.params = $("#params").val(); // 自定义深度链接参数，用户点击深度链接打开app之后将params参数将被带入app【可选】
+
+
+			$("#lkme_key").val() && ($("#request").html(JSON.stringify(data)), linkedme.link(data, function(err, data){
+				if(err){
+					$("#response").html(JSON.stringify(err));
+				} else {
+					$("#response").html(JSON.stringify(data));
+				}
+			}, false))
+		});
+
+	</script>
+</body>
+</html>
