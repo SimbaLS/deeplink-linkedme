@@ -1,121 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="lib/bootstrap.min.css">
-	<script src="lib/linkedme.min.js"></script>
-	<script src="lib/jquery.min.js"></script>
-	<script src="lib/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>deeplink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="lib/linkedme.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
 </head>
 <body>
 
-	<div class="container" style="margin-top: 30px">
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3">
-				<h2>LinkedME Web-SDK接口调用示例</h2>
-				<br>
-				<h4>Session info</h4>
-				<pre id="session"> </pre>
-				<h4>Request</h4>
-				<pre id="request"> </pre>
-				<h4>Response</h4>
-				<pre id="response"> </pre>
-				<hr>
-				<h2>接口</h2>
-				<div class="form-group">
-					<label for="lkme_key" class="h5">linkedme key</label>
-					<input type="text" id="lkme_key" class="form-control" placeholder="">
-				</div>
-				<div class="form-group">
-					<label for="" class="h4">初始化linkedme对象接口</label>
-					<input type="button" id="init" class="btn btn-default btn-success" value=".init()">
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="" class="h5">功能</label>
-							<input type="text" id="features" class="form-control">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="" class="h5">活动</label>
-							<input type="text" id="campaigns" class="form-control">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="" class="h5">阶段</label>
-							<input type="text" id="stages" class="form-control">
-						</div>
-					</div>
-				</div>
-				<div class="row">
+<div class="container" style="margin-top: 30px">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <h2>LinkedME Web-SDK接口调用示例</h2>
+            <br>
+            <h4>Session info</h4>
+            <pre id="session"> </pre>
+            <h4>Request</h4>
+            <pre id="request"> </pre>
+            <h4>Response</h4>
+            <pre id="response"> </pre>
+            <hr>
+            <h2>接口</h2>
+            <div class="form-group">
+                <label for="lkme_key" class="h5">linkedme key</label>
+                <!--linkedme_live_258318dfe1077ac411a08b6fef77c819-->
+                <input type="text" id="lkme_key" class="form-control" placeholder="" value="linkedme_live_be53e3b517dc977e7e4d01e1e1d2c706">
+            </div>
+            <div class="form-group">
+                <label for="" class="h4">初始linkedme对象接口</label>
+                <input type="button" id="init" class="btn btn-default btn-success" value=".init()">
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="" class="h5">功能</label>
+                        <input type="text" id="features" class="form-control" value="inviteTestFeatures">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="" class="h5">活动</label>
+                        <input type="text" id="campaigns" class="form-control" value="inviteTestCampaigns">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="" class="h5">阶段</label>
+                        <input type="text" id="stages" class="form-control" value="inviteTestStages">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
 
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="" class="h5">渠道</label>
-							<input type="text" id="channels" class="form-control">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="" class="h5">标签</label>
-							<input type="text" id="tags" class="form-control">
-						</div>
-					</div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="" class="h5">渠道</label>
+                        <input type="text" id="channels" class="form-control" value="inviteTestChannels">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="" class="h5">标签</label>
+                        <input type="text" id="tags" class="form-control" value="inviteTestTags">
+                    </div>
+                </div>
 
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="form-group">
-							<label for="" class="h5">自定义参数</label>
-							<input type="text" id="params" class="form-control" placeholder='{"category":"electronics","productid":"1234"}'>
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="h4">生成深度链接接口</label>
-					<input type="button" id="link" class="btn btn-default btn-success" value=".link()">
-				</div>
-			</div>
-		</div>
-	</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="" class="h5">自定义参数</label>
+                        <input type="text" id="params" class="form-control" placeholder='{"category":"electronics","productid":"1234"}' value='{"data":{"inviteID":"14685440718848464","payType":"AA","inviteObject":"-1","inviteNum":"50","inviteTime":"2016-07-17 16:00","title":"","content":"","applyID":"","payCredit":"1","setCredit":"0","lng":"116.426105","lat":"39.908479","ifDiscount":0,"discount":"","evaluation":"","activityLink":"https:\/\/m.yhouse.com\/meal\/5225","activityName":"\u957f\u5b89\u885728\u5c42360\u5ea6\u65cb\u8f6c\u770b\u4eac\u57ce\u5929\u9645\u7ebf \u6ce2\u58eb\u987f\u9f99\u867e\u665a\u5bb4","posterImg":"http:\/\/p.yhres.com\/meal\/2016\/06\/03\/1464935432237.jpg-q75h","activityTime":"06\u670802\u65e5-12\u670831\u65e5 17:30-22:00","activityAddress":"\u5efa\u56fd\u95e8\/\u5317\u4eac\u7ad9","activityPay":"688\u5143\/1\u4eba","activityID":"14661341326914545","state":"0","businessArea":"\u671d\u9633","businessAreaAddress":"\u5efa\u56fd\u95e8\/\u5317\u4eac\u7ad9","activityLat":"39.908479","activityLng":"116.426105","userName":"Cecilia","userID":"14615770491550622","userImg":"http:\/\/7xnasn.com2.z0.glb.qiniucdn.com\/data\/2016\/05\/16\/14633376315924620.jpg","age":"23","constellation":"\u53cc\u9c7c\u5ea7","sex":"1","phone":"13811522312","imID":"14615770491550622","credit":"7539","job":"\u533b\u7597\u5065\u5eb7","duties":"\u5c0f\u4eba\u7269","rank":0,"criticism":2,"editOff":"0","read":"","invited":"\u5f00\u59cb","comment":"4","url":"http:\/\/www.qingniwan.cc\/qingniwan\/inviteSignUp","ifCollect":"1","freeChatTimes":100,"ifConsumeIncoin":0,"ishave":0,"commentList":[{"commentID":"14685511161356187","commentUserImg":"http:\/\/7xnasn.com2.z0.glb.qiniucdn.com\/data\/2016\/07\/11\/1468197790829739.jpg","commentUserName":"\u8001\u6797","commentAge":"26","commentSex":"0","commentContent":"\u518d\u665a\u4e00\u70b9\u53bb\u5427\uff1f\u591c\u666f\u5f88\u7f8e","commentTime":"07-15 10:51","userID":"14679715047017896"},{"commentID":"14685483422936239","commentUserImg":"http:\/\/7xnasn.com2.z0.glb.qiniucdn.com\/data\/2016\/07\/11\/14682248884603734.jpg","commentUserName":"\u591c\u5bbf\u4f3d\u84dd","commentAge":"25","commentSex":"0","commentContent":"\u592a\u4f1a\u9009\u5730\u65b9\u4e86\uff0c\u4e0d\u9519\uff01","commentTime":"07-15 10:05","userID":"14682249621042132"},{"commentID":"14685464721677744","commentUserImg":"http:\/\/7xnasn.com2.z0.glb.qiniucdn.com\/data\/2016\/03\/01\/14567995458429632.jpg","commentUserName":"\u9646\u831c","commentAge":"25","commentSex":"1","commentContent":"\u65cb\u8f6c\u9910\u5385\ud83d\udc4d\ud83c\udffb","commentTime":"07-15 09:34","userID":"96358429945233480"},{"commentID":"14685449420994311","commentUserImg":"http:\/\/7xnasn.com2.z0.glb.qiniucdn.com\/data\/2016\/06\/03\/14649594818132598.jpg","commentUserName":"Sean","commentAge":"25","commentSex":"0","commentContent":"\u597d\u5730\u70b9","commentTime":"07-15 09:09","userID":"14649594411015621"}]},"code":200,"msg":"success"}'>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="h4">生成深度链接接口</label>
+                <input type="button" id="link" class="btn btn-default btn-success" value=".link()">
+            </div>
+        </div>
+    </div>
+</div>
 
-	<script>
+<hr>
+<h1 style="text-align: center; display: none;">
+    <a id="jumpLink" href="javascript:">点击打开 App</a>
+</h1>
+<hr>
 
-		$("#init").click(function(){
-			$("#lkme_key").val() && (linkedme.init($("#lkme_key").val(), null, function(err, data){
-				if(err){
-					$("#response").html(JSON.stringify(err));
-				} else {
-					$("#session").html(data.session_id);
-					document.cookie = data.identity_id;
-					$("#response").html(JSON.stringify(data));
-				}
-			}))
-		});
-		$("#link").click(function(){
-			var data = {};
-			data.feature = $("#features").val(); // 自定义深度链接功能，多个用逗号分隔，【可选】
-			data.campaign = $("#campaigns").val(); // 自定义深度链接活动，多个用逗号分隔，【可选】
-			data.stage = $("#stages").val(); // 自定义深度链接阶段，多个用逗号分隔，【可选】
-			data.channel = $("#channels").val(); // 自定义深度链接渠道，多个用逗号分隔，【可选】
-			data.tags = $("#tags").val(); // 自定义深度链接标签，多个用逗号分隔，【可选】
-			data.params = $("#params").val(); // 自定义深度链接参数，用户点击深度链接打开app之后将params参数将被带入app【可选】
+<script>
+
+    $("#init").click(function () {
+        $("#lkme_key").val() && (linkedme.init($("#lkme_key").val(), null, function (err, data) {
+            if (err) {
+                $("#response").html(JSON.stringify(err));
+            } else {
+                $("#session").html(data.session_id);
+                document.cookie = data.identity_id;
+                $("#response").html(JSON.stringify(data));
+            }
+        }))
+    });
+    $("#link").click(function () {
+        var data = {};
+        data.feature = $("#features").val(); // 自定义深度链接功能，多个用逗号分隔，【可选】
+        data.campaign = $("#campaigns").val(); // 自定义深度链接活动，多个用逗号分隔，【可选】
+        data.stage = $("#stages").val(); // 自定义深度链接阶段，多个用逗号分隔，【可选】
+        data.channel = $("#channels").val(); // 自定义深度链接渠道，多个用逗号分隔，【可选】
+        data.tags = $("#tags").val(); // 自定义深度链接标签，多个用逗号分隔，【可选】
+        data.params = $("#params").val(); // 自定义深度链接参数，用户点击深度链接打开app之后将params参数将被带入app【可选】
 
 
-			$("#lkme_key").val() && ($("#request").html(JSON.stringify(data)), linkedme.link(data, function(err, data){
-				if(err){
-					$("#response").html(JSON.stringify(err));
-				} else {
-					$("#response").html(JSON.stringify(data));
-				}
-			}, false))
-		});
+        $("#lkme_key").val() && ($("#request").html(JSON.stringify(data)), linkedme.link(data, function (err, data) {
+            if (err) {
+                $("#response").html(JSON.stringify(err));
+            } else {
+                $("#response").html(JSON.stringify(data));
+                $('#jumpLink').attr('href', data.url).parent().show();
 
-	</script>
+                /*setTimeout(function () {
+                    location.href = data.url;
+                }, 3000);*/
+
+            }
+        }, false))
+    });
+
+    setTimeout(function () {
+        $("#init").click();
+    }, 100);
+    setTimeout(function () {
+        $("#link").click();
+    }, 500);
+    setTimeout(function () {
+        scrollTo(0, document.body.clientHeight);
+    }, 500);
+
+</script>
 </body>
 </html>
